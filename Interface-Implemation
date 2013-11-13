@@ -1,0 +1,75 @@
+#import <Foundation/Foundation.h>
+
+@interface Pessoas: NSObject{
+	int idade;
+	int peso;
+}
+
+-(void) imprimir;
+-(void) setIdade: (int) i;
+-(void) setPeso: (int) p;
+-(void) imprimir2;
+
+@end
+
+@implementation Pessoas
+
+-(void) imprimir{
+	NSLog(@"Meu nome é Bruno, eu tenho %i anos e peso %i quilos", idade, peso);
+}
+
+-(void) imprimir2{
+	NSLog(@"Meu nome é Thauana, eu tenho %i anos e peso %i quilos", idade, peso);
+}
+
+-void(setIdade) : (int) i{
+	idade = i;
+}
+
+-void(setPeso): (int) p{
+	peso = p;
+}
+
+@end
+
+int main(int args, const char *argv[]){
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+	
+	Pessoas * bruno = [[Pessoas alloc]init];
+	Pessoas * thauana = [[Pessoas alloc]init];	
+	
+	[bruno setIdade:20];
+	[bruno setPeso:80];
+	[bruno imprimir];
+	[bruno release];
+	
+	[thauana setIdade:16];
+	[thauana setPeso:60];
+	[thauana imprimir2];
+	[thauana release];
+	
+	[pool drain];
+	
+	return 0;
+}
+
+//xcode 5
+int main (int argc, const char * argv[]){ 
+
+	@autoreleasepool { 
+		Pessoas * bruno = [[Pessoas alloc]init];
+		Pessoas * thauana = [[Pessoas alloc]init];	
+		
+		[bruno setIdade:20];
+		[bruno setPeso:80];
+		[bruno imprimir];
+		[bruno release];
+		
+		[thauana setIdade:16];
+		[thauana setPeso:60];
+		[thauana imprimir2];
+		[thauana release];
+	} 
+	
+	return 0; 
+}
